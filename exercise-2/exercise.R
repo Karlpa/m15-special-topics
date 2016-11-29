@@ -38,13 +38,13 @@ for(i in 1:100) {
   test <- homes[-train_ind, ]
   
   # 2. Pass your **training data** to the `rpart` function to run a simple classification operation
-  test.rpart <- rpart(in_sf ~ ., data = train, method="class")
+  basic.fit <- rpart(in_sf ~ ., data = train, method="class")
   
   # 3. Pass your results to the `AssessFit` function to assess the fit
   
-  AssessFit(test.rpart)
+  AssessFit(basic.fit)
   # 4. Store your assessment in the `basic.fits` vector
-  basic.fits <- AssessFit(test.rpart)
+  basic.fits <- c(basic.fits, AssessFit(test.rpart))
 }
 
 # 5. Make a histogram of your `basic.fits` vector
